@@ -5,6 +5,9 @@ import {PORT} from "./config.js"
 const app = express();
 app.use(express.json());
 app.use("/api", employees);
+app.get("/hi", (req, res) =>{
+    res.send("It's everything ok");
+});
 app.use(index);
 console.log(`I am listening at port ${PORT}`);
 app.listen(PORT);
