@@ -2,13 +2,13 @@ import { pool } from "../db.js";
 
 export const getEmployees = async (req, res) => {
   try {
-    let [rows] = await pool.query("SELECT * FROM employee");
-  } catch {
+    const [rows] = await pool.query("SELECT * FROM employee");
+    res.json(rows);
+  } catch(error) {
     res.status(404).json({
       message: "Something goes wrong :/",
     });
   }
-  res.json(rows);
 };
 export const createEmployees = async (req, res) => {
   const { employeeName, salary } = req.body;
